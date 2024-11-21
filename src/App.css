@@ -1,38 +1,112 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+}
+
+.pokemon-container {
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pokemon-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: auto; 
+  white-space: nowrap; 
+  scroll-behavior: smooth; 
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  max-width: 90%; 
+  margin: 0 auto; 
+  height: 100px;
+
+  perspective: 1000px;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-.App-link {
-  color: #61dafb;
+.pokemon-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.pokemon-item {
+  position: relative;
+  display: inline-block;
+   padding: 10px 20px;
+   margin: 10px;
+   background: linear-gradient(145deg, #ffcc03, #fde140); 
+   border: 1px solid #356abc;
+   border-radius: 8px;
+   color: #356abc;
+   font-family: 'Pokemon Solid', sans-serif; 
+   font-size: 1.2rem;
+   text-align: center;
+   letter-spacing: 0.1rem;
+   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s ease, box-shadow 0.3s ease; 
+   cursor: pointer;
+   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgb(250, 243, 243);
+ }
+ 
+ .pokemon-item:hover {
+   transform: translateY(-10px) rotateX(10deg) rotateY(10deg) scale(1.1);
+   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.6); 
+ }
+
+.pokemon-item:hover {
+  transform: translateY(-10px) rotateX(10deg) rotateY(10deg) scale(1.1); 
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.6); 
+}
+
+.loading-indicator {
+  flex: 0 0 auto;
+  padding: 10px;
+  color: #666;
+}
+
+.pokemon-details {
+  max-width: 90%;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+  transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+  animation: float-tilt 5s ease-in-out infinite;
+}
+
+@keyframes float-tilt {
+  0%, 100% {
+    transform: perspective(500px) translateY(0) rotateX(0deg) rotateY(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: perspective(500px) translateY(-10px) rotateX(5deg) rotateY(-5deg);
   }
+  50% {
+    transform: perspective(500px) translateY(-15px) rotateX(-5deg) rotateY(5deg);
+  }
+}
+
+
+.image-container {
+  position: relative;
+  overflow: hidden; 
+  width: 200px; 
+  height: 200px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+.image-container:hover img {
+  transform: scale(1.5); 
+  filter: brightness(1.2); 
 }
