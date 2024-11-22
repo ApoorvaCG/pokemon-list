@@ -112,7 +112,7 @@ function App() {
 
   return (
     <div>
-      <h1 style={{ fontFamily: 'Pokemon Solid', letterSpacing: "0.1rem", textAlign: 'center', fontWeight: 'lighter', color: '#ffcc03', WebkitTextStroke: '2px #356abc' }}>
+      <h1 style={{ fontFamily: 'Pokemon Solid',fontSize: '3rem', letterSpacing: "0.2rem", textAlign: 'center', fontWeight: 'bolder', color: '#ffcc03', WebkitTextStroke: '2px #356abc' }}>
         Pokémon Directory
       </h1>
 
@@ -126,9 +126,7 @@ function App() {
               key={index}
               onClick={() => fetchPokemonDetails(pokemon.url)}
               className="pokemon-item"
-              style={{ cursor: "pointer", fontFamily: 'Pokemon Solid', fontWeight: 'lighter', letterSpacing: "0.3rem",
-                animationDelay: `${index * 0.3}s`
-               }}
+              style={{ cursor: "pointer", fontFamily: 'Pokemon Solid', fontWeight: 'lighter', letterSpacing: "0.3rem" }}
             >
               {pokemon.name}
             </div>
@@ -139,7 +137,7 @@ function App() {
 
       {/* Pokemon Details */}
       {pokemonDetails && (
-        <div style={{width:'100%', display:'flex', justifyContent:'center',}}>
+        <div style={{width:'100%', display:'flex', justifyContent:'center', margin: '20px 0px'}}>
           <div className='pokemon-details' style={{ display: 'flex', width:'max-content', justifyContent: 'center', alignItems: 'center', gap:'4rem' }}>
 
             <div className="image-container">
@@ -149,11 +147,11 @@ function App() {
               width={100}
             /></div>
             <div style={{display:'flex', flexDirection:'column'}}>
-            <h2 style={{fontFamily: 'Pokemon Solid', letterSpacing: "0.2rem",}}>{pokemonDetails.name}</h2>
-            <p style={{fontFamily:'"Irish Grover", roboto', fontSize:'1.25rem'}}>
-              <strong >Types:</strong>{" "}
+            <h2 style={{fontFamily: 'Pokemon Solid', letterSpacing: "0.2rem", margin:0}}>{pokemonDetails.name}</h2>
+            <p style={{fontFamily:'"Irish Grover", roboto', fontSize:'1.25rem', margin:0}}>
+              <span >Types:</span>{" "}
               {pokemonDetails.types.map((t, index) => (
-                <span key={index}>{t.type.name}{index < pokemonDetails.types.length - 1 ? ", " : ""}</span>
+                <strong key={index}>{t.type.name}{index < pokemonDetails.types.length - 1 ? ", " : ""}</strong>
               ))}
             </p>
             </div>
